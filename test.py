@@ -1,4 +1,7 @@
-k = [[1, 2], [2, 1], [1, 1]]
+import sys
 
-k.sort()
+k = []
+
+k.append(sys.stdin.readline().split())
+
 print(k)
