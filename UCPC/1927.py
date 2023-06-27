@@ -11,9 +11,9 @@ for i in range(n):
 
     if tmp == 0:
         if heap:
-            print(heapq.heappop(heap)[1])
+            print(heapq.heappop(heap))
         else:
             print(0)
 
     else:
-        heapq.heappush(heap, (abs(tmp), tmp))
+        heapq.heappush(heap, tmp)
