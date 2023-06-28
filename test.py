@@ -1,19 +1,22 @@
 import sys
-import heapq
+N, M = map(int, input().split())
 
-n = int(sys.stdin.readline())
+graph = []
+for i in range(M):
+    tmp = input()
+    arr = []
+    for j in str(tmp):
+        arr.append(int(j))
+    graph.append(arr)
 
+visited = []
+for _ in range(M):
+    visited.append([0]*N)
 
-heap = []
+print(visited)
 
-for i in range(n):
-    tmp = int(sys.stdin.readline())
-
-    if tmp == 0:
-        if heap:
-            print(-heapq.heappop(heap))
-        else:
-            print(0)
-
-    else:
-        heapq.heappush(heap, -tmp)
+def dfs(cur_x, cur_y):
+    visited[cur_x][cur_y] = 1
+    for v in graph[cur_x][cur_y]:
+        if v not in visited:
+            dfs(cu)
