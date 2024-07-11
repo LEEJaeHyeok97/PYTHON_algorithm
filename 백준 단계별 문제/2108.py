@@ -1,64 +1,54 @@
-#최빈값 수정중
-
 import sys
-
-l = []
-count = [0]* 8001
+input = sys.stdin.readline
 
 n = int(input())
 
+li = []
 for i in range(n):
-    l.append(int(sys.stdin.readline()))
+    li.append(int(input()))
 
 
-l.sort()
+li.sort()
 
-sum = 0
-#산술평균
-for i in l:
-    sum +=i
+# print(li)
 
-ans1 = round(sum / len(l))
+ans1 = int(round(sum(li) / len(li), 0))
 print(ans1)
 
-#중앙값
-center = int(len(l)/2)
-print(l[center])
+ans2 = li[len(li)//2]
+print(ans2)
 
-
-#최빈값
-for i in l:
-    if i > 0:
-        count[i+4000] +=1
+ans3 = {}
+for i in li:
+    if i not in ans3:
+        ans3[i] = 1
     else:
-        count[-1*i] +=1
+        ans3[i] += 1
 
-max1 = 0
-max2 = 0
-max = 0
-for i in range(len(count)):
-    if i > max1:
-        max1 = i
-        count[max1] = 0
-for i in range(len(count)):
-    if i > max2:
-        max2 = i
+max_cnt = max(ans3.values())
+max_arr = sorted([k for k, v in ans3.items() if v == max_cnt])
 
-if max1 == max2:
-    max = max2
+if len(max_arr) == 1:
+    print(max_arr[0])
 else:
-    max = max1
+    print(max_arr[1])
 
-if max > 4000:
-    max = int(max - 4000)
+
+
+
+
+
+if len(li) == 1:
+    print(0)
 else:
-    max = -1 * max
+    print(li[-1] - li[0])
 
-print(max)
-
-
-
-#범위
-print(l[-1] - l[0])
+##############################################
+# dict = {'a': 1, 'b': 2, 'c': 1, 'd': 2}
+# max_cnt = 2
+#
+# max_arr = sorted([k for k, v in dict.items() if v == 1])
+#
+# print(max_arr)
 
 
